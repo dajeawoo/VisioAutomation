@@ -76,8 +76,13 @@ namespace VisioAutomation.Extensions
             IVisio.Master master,
             Geometry.Point point)
         {
-            var surface = new SurfaceTarget(page);
-            return surface.Drop(master, point);
+            if (master == null)
+            {
+                throw new System.ArgumentNullException(nameof(master));
+            }
+
+            var shape = page.Drop(master, point.X, point.Y);
+            return shape;
         }
 
         public static short[] DropManyU(

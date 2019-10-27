@@ -68,65 +68,6 @@ namespace VisioAutomation
             }
         }
 
-
-        public short[] DropManyU(
-            IList<IVisio.Master> masters,
-            IEnumerable<VisioAutomation.Geometry.Point> points)
-        {
-            if (masters == null)
-            {
-                throw new System.ArgumentNullException(nameof(masters));
-            }
-
-            if (masters.Count < 1)
-            {
-                return new short[0];
-            }
-
-            if (points == null)
-            {
-                throw new System.ArgumentNullException(nameof(points));
-            }
-
-            // NOTE: DropMany will fail if you pass in zero items to drop
-            var masters_obj_array = masters.Cast<object>().ToArray();
-            var xy_array = VisioAutomation.Geometry.Point.ToDoubles(points).ToArray();
-
-            System.Array outids_sa;
-
-            var val = this.TargetType switch
-            {
-                SurfaceTargetType.Master => this.Master.DropManyU(masters_obj_array, xy_array, out outids_sa),
-                SurfaceTargetType.Page => this.Page.DropManyU(masters_obj_array, xy_array, out outids_sa),
-                SurfaceTargetType.Shape => this.Shape.DropManyU(masters_obj_array, xy_array, out outids_sa),
-                _ => throw new System.ArgumentException("Unhandled Drawing Surface")
-            };
-
-            short[] outids = (short[]) outids_sa;
-            return outids;
-        }
-
-        public IVisio.Shape Drop(
-            IVisio.Master master,
-            VisioAutomation.Geometry.Point point)
-        {
-            if (master == null)
-            {
-                throw new System.ArgumentNullException(nameof(master));
-            }
-
-            var shape = this.TargetType switch
-            {
-                SurfaceTargetType.Master => this.Master.Drop(master, point.X, point.Y),
-                SurfaceTargetType.Page => this.Page.Drop(master, point.X, point.Y),
-                SurfaceTargetType.Shape => this.Shape.Drop(master, point.X, point.Y),
-                _ => throw new System.ArgumentException("Unhandled Drawing Surface")
-            };
-
-            return shape;
-
-        }
-
         public int SetFormulas(ShapeSheet.Streams.StreamArray stream, object[] formulas, short flags)
         {
             if (formulas.Length != stream.Count)
