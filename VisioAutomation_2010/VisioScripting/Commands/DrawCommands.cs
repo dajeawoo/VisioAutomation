@@ -49,7 +49,7 @@ namespace VisioScripting.Commands
         public IVisio.Shape DrawOval(VisioScripting.TargetPage targetpage, VisioAutomation.Geometry.Rectangle rect)
         {
             targetpage = targetpage.ResolveToPage(this._client);
-            var surface = new VisioAutomation.SurfaceTarget(targetpage.Page);
+            var surface = new VisioAutomation.ShapeSheet.SurfaceTarget(targetpage.Page);
 
             using (var undoscope = this._client.Undo.NewUndoScope(nameof(DrawOval)))
             {

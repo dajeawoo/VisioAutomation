@@ -3,7 +3,7 @@ using System.Linq;
 using IVisio = Microsoft.Office.Interop.Visio;
 using VisioAutomation.Extensions;
 
-namespace VisioAutomation
+namespace VisioAutomation.ShapeSheet
 {
     public struct SurfaceTarget
     {

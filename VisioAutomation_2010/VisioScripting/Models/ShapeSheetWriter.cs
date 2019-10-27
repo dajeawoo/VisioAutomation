@@ -7,14 +7,14 @@ namespace VisioScripting.Models
     {
         internal readonly SidSrcWriter Writer;
         public Client Client;
-        public VisioAutomation.SurfaceTarget Surface;
+        public VisioAutomation.ShapeSheet.SurfaceTarget Surface;
         public bool BlastGuards;
         public bool TestCircular;
 
         public ShapeSheetWriter(Client client, IVisio.Page page)
         {
             this.Client = client;
-            this.Surface = new VisioAutomation.SurfaceTarget(page);
+            this.Surface = new VisioAutomation.ShapeSheet.SurfaceTarget(page);
             this.Writer = new SidSrcWriter();
         }
 

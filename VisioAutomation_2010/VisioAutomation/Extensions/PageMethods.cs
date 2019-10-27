@@ -45,7 +45,7 @@ namespace VisioAutomation.Extensions
         
         public static IVisio.Shape DrawPolyline(this IVisio.Page page, IList<Geometry.Point> points)
         {
-            var surface = new SurfaceTarget(page);
+            var surface = new ShapeSheet.SurfaceTarget(page);
             var shape = page.DrawBezier(points);
             return shape;
         }
@@ -116,7 +116,7 @@ namespace VisioAutomation.Extensions
         {
             System.Array formulas_sa = null;
             page.GetFormulasU(stream.Array, out formulas_sa);
-            var formulas = SurfaceTarget.system_array_to_typed_array<string>(formulas_sa);
+            var formulas = ShapeSheet.SurfaceTarget.system_array_to_typed_array<string>(formulas_sa);
             return formulas;
         }
 
@@ -124,10 +124,10 @@ namespace VisioAutomation.Extensions
             object[] unitcodes)
         {
 
-            var flags = SurfaceTarget._type_to_vis_get_set_args(typeof(TResult));
+            var flags = ShapeSheet.SurfaceTarget._type_to_vis_get_set_args(typeof(TResult));
             System.Array results_sa = null;
             page.GetResults(stream.Array, (short) flags, unitcodes, out results_sa);
-            var results = SurfaceTarget.system_array_to_typed_array<TResult>(results_sa);
+            var results = ShapeSheet.SurfaceTarget.system_array_to_typed_array<TResult>(results_sa);
             return results;
         }
 

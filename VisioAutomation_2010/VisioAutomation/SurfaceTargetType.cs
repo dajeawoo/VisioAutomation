@@ -1,4 +1,4 @@
-﻿namespace VisioAutomation
+﻿namespace VisioAutomation.ShapeSheet
 {
     public enum SurfaceTargetType
     {

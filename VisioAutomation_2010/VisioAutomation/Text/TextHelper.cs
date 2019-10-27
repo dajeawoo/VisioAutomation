@@ -41,7 +41,7 @@ namespace VisioAutomation.Text
 
             var streamarray = VASS.Streams.StreamArray.FromSrc(srcs);
    
-            var surface = new SurfaceTarget(shape);
+            var surface = new ShapeSheet.SurfaceTarget(shape);
 
             const object[] unitcodes = null;
 
