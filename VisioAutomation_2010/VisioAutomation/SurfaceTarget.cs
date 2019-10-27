@@ -25,21 +25,6 @@ namespace VisioAutomation
             this.TargetType = SurfaceTargetType.Shape;
         }
 
-        public IVisio.Shapes Shapes
-        {
-            get
-            {
-                var shapes = this.TargetType switch
-                {
-                    SurfaceTargetType.Page => this.Page.Shapes,
-                    SurfaceTargetType.Shape => this.Shape.Shapes,
-                    _ => throw new System.ArgumentException("Unhandled Drawing Surface")
-                };
-
-                return shapes;
-            }
-        }
-
         public short ID16
         {
             get

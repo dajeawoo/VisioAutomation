@@ -35,6 +35,11 @@ namespace VisioAutomation_Tests.Scripting
             var formulas = reader.GetFormulas();
             Assert.AreEqual("0.5 in", formulas[0]);
             Assert.AreEqual("1.5 in", formulas[1]);
+
+            var results = reader.GetResults();
+            Assert.AreEqual("0.5000 in.", results[0]);
+            Assert.AreEqual("1.5000 in.", results[1]);
+
             doc.Close(true);
         }
     }
