@@ -84,7 +84,7 @@ namespace VisioAutomation.ShapeSheet.CellGroups
             this._enforce_type(CellGroupBuilderType.MultiRow);
             var sec_cols = this.query_sections_multirow[0];
 
-            var cellqueryresult = __GetCells(query_sections_multirow,page, shapeidpairs, type);
+            var cellqueryresult = __getcells_page(query_sections_multirow,page, shapeidpairs, type);
             var list_cellgroups = new List<List<TGroup>>(shapeidpairs.Count);
             foreach (var data_for_shape in cellqueryresult)
             {
@@ -99,7 +99,7 @@ namespace VisioAutomation.ShapeSheet.CellGroups
         {
             this._enforce_type(CellGroupBuilderType.MultiRow);
             var sec_cols = this.query_sections_multirow[0];
-            var cellqueryresult = __getcells(query_sections_multirow, shape, type);
+            var cellqueryresult = __getcells_shape(query_sections_multirow, shape, type);
             var shape0_sectionshaperows0 = cellqueryresult[0];
             var cellgroups = this._sectionshaperows_to_cellgroups(shape0_sectionshaperows0,sec_cols);
             return cellgroups;
@@ -116,7 +116,7 @@ namespace VisioAutomation.ShapeSheet.CellGroups
             return cellgroups;
         }
 
-        private Query.SectionQueryShapeResults<string> __getcells(Query.SectionQuery query, IVisio.Shape shape, CellValueType type)
+        private Query.SectionQueryShapeResults<string> __getcells_shape(Query.SectionQuery query, IVisio.Shape shape, CellValueType type)
         {
             var surface = new SurfaceTarget(shape);
             var results = type switch
@@ -128,7 +128,7 @@ namespace VisioAutomation.ShapeSheet.CellGroups
             return results;
         }
 
-        private Query.SectionQueryResults<string> __GetCells(Query.SectionQuery query, IVisio.Page page, ShapeIDPairs shapeidpairs, CellValueType type)
+        private Query.SectionQueryResults<string> __getcells_page(Query.SectionQuery query, IVisio.Page page, ShapeIDPairs shapeidpairs, CellValueType type)
         {
             var surface = new SurfaceTarget(page);
             var results = type switch
